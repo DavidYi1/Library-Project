@@ -1,13 +1,12 @@
-import java.util.ArrayList;
 public abstract class Borrower {
   
-  private ArrayList<Book> books;
+  private Book[] books;
   private int checkout;
   
-  public class Borrower(ArrayList<Book> b, int c) {
-    books = new ArrayList<Book>();
-    for (int i = 0; i < b.size(); i++)
-      books.set(i, b.get(i));
+  public Borrower(Book[] b, int c) {
+    books = new Book[b.length];
+    for (int i = 0; i < b.length; i++)
+      books[i] = b[i];
     checkout = c;
   }
   
