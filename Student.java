@@ -1,11 +1,16 @@
-import java.util.ArrayList;
 public class Student extends Borrower {
   
-  private ArrayList<Book> books;
-  private int checkout;
+  private Book[] books;
+  private int checkout, osis, grade;
+  private String lastName, firstName, officialClass;
   
-  public Student(ArrayList<Book> b, int c) {
+  public Student(Book[] b, int c, int o, int g, String ln, String fn, String oc) {
     super(b, c);
+    osis = o;
+    grade = g;
+    lastName = ln;
+    firstName = fn;
+    officialClass = oc;
   }
   
   public void borrow() {
