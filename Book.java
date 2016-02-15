@@ -19,7 +19,7 @@ public class Book {
   }
   
   public void setCheckoutTime(int dd) {
-    daysDue = x;
+    daysDue = dd;
   }
   
   public void bookCheckedOut() {
