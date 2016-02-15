@@ -1,30 +1,32 @@
-public class Book{
+public class Book {
   //Fields
-  private String Title;
-  private String ISBN;
-  private String Genre;
-  private String Author;
-  private String Status;
-  private boolean checkedOut = false;
-  private int checkoutTime = 0;
+  private String title;
+  private String isbn;
+  private String genre;
+  private String author;
+  private String status;
+  private boolean checkedOut;
+  private int daysDue;
   
-  public Book(String t, String i, String g, String a, String s ){
-    Title = t;
-    ISBN = i;
-    Genre = g;
-    Author = a;
-    Status = s;
+  public Book(String t, String i, String g, String a, String s) {
+    title = t;
+    isbn = i;
+    genre = g;
+    author = a;
+    status = s;
+    checkedOut = false;
+    daysDue = 0;
   }
   
-  public void setCheckoutTime(int x){
+  public void setCheckoutTime(int x) {
     checkoutTime = x;
   }
   
-  public void bookCheckedOut(){
+  public void bookCheckedOut() {
     checkedOut = true;
   }
   
-  public void bookReturned(){
+  public void bookReturned() {
     checkedOut = false;
   }
 }
