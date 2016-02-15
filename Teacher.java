@@ -1,11 +1,14 @@
-import java.util.ArrayList;
 public class Teacher extends Borrower {
   
-  private ArrayList<Book> books;
-  private int checkout;
+  private Book[] books;
+  private int checkout, id;
+  private String name;
   
-  public Teacher(ArrayList<Book> b, int c) {
+  public Teacher(Book[] b, int c, int i, String n) {
     super(b, c);
+    checkout = c;
+    id = i;
+    name = n;
   }
   
   public void borrow() {
