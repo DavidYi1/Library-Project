@@ -1,11 +1,10 @@
 public class Teacher extends Borrower {
   
-  private Book[] books;
-  private int checkout, id;
+  private Book[] books = Book[2];
+  private int checkout = 7, id;
   private String name;
   
-  public Teacher(Book[] b, int c, int i, String n) {
-    super(b, c);
+  public Teacher(int i, String n) {
     checkout = c;
     id = i;
     name = n;
