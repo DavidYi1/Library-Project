@@ -18,8 +18,8 @@ public class Book {
     daysDue = 0;
   }
   
-  public void setCheckoutTime(int x) {
-    checkoutTime = x;
+  public void setCheckoutTime(int dd) {
+    daysDue = x;
   }
   
   public void bookCheckedOut() {
