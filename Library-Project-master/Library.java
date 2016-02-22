@@ -22,15 +22,20 @@ public class Library {
         
         System.out.print("Do you want to add, remove or view a book?");
         String action = kb.next();
+        
         System.out.print("Do you want to enter book ISBN or name?");
         String opt = kb.next();
+        
+        String isbn = null;
         if (opt.equals("ISBN")) {
           System.out.print("Enter ISBN: ");
-          String isbn = kb.next();
+          isbn = kb.next();
         }
+        
+        String name = null;
         if (opt.equals("name")) {
           System.out.print("Enter name: ");
-          String name = kb.next();
+          name = kb.next();
         }
         
         String  thisLine = null;
