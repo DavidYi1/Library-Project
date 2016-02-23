@@ -10,8 +10,27 @@ public class Library {
   public static void main (String args[]) {
     boolean run = true;
     String command = null;
-    PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter("books.txt")));
+    ArrayList<String> AllbookData = new ArrayList<String>();
+    ArrayList<Book> library_books = new ArrayList<Book>();
     BufferedReader br = new BufferedReader(new FileReader("books.txt"));
+    String line;
+    while(!(br.readline() == null)){
+      line = br.readline();
+      bookdata.add(line);
+    }
+    for(int i = 0; i < AllBookData.size(); i++){
+      String bookData = AllBookData.get(i);
+      String[] bookinfo = bookData.split(","); //split based on comma delimited format
+      String title = bookinfo[0];
+      String isbn = bookinfo[1];
+      String genre = bookinfo[2];
+      String author = bookinfo[3];
+      String status = bookinfo[4];
+      String check = bookinfo[5];
+      String daysDue = 
+
+
+    }
     
     Scanner kb = new Scanner(System.in);
     System.out.print("What would you like to access? (borrower/librarian)");
@@ -69,5 +88,7 @@ public class Library {
         br.close();
       }
     }
+    
+    PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter("books.txt")));
   }
 }
