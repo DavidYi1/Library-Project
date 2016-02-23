@@ -14,6 +14,7 @@ public class Book {
   private Date dueDate;
   
   public Book(String t, String i, String g, String a, String s) {
+    //need to fix to account for if book is checked out or not/
     title = t;
     isbn = i;
     genre = g;
