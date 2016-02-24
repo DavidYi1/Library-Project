@@ -79,7 +79,6 @@ public class Library {
       else {
         run = false;
         kb.close();
-        pw.close();
         br.close();
       }
     }
