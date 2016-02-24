@@ -14,10 +14,12 @@ public class Library {
     ArrayList<Book> library_books = new ArrayList<Book>();
     BufferedReader br = new BufferedReader(new FileReader("books.txt"));
     String line;
+    
     while(!(br.readline() == null)){
       line = br.readline();
       bookdata.add(line);
     }
+    
     for(int i = 0; i < AllBookData.size(); i++){
       String bookData = AllBookData.get(i);
       String[] bookinfo = bookData.split(","); //split based on comma delimited format
@@ -67,11 +69,8 @@ public class Library {
         }
         
         if (action.equals("view")) {
-          while ((thisLine = br.readLine()) != null) {
-            if (thisLine.contains(isbn) || thisLine.contains(name)) {
-              System.out.print(thisLine);
-              break;
-            }
+          for (int i = 0; i < bookinfo.length; i++) {
+            System.out.println(bookinfo[i]);
           }
         }
       }
