@@ -67,16 +67,11 @@ public class Library {
         }
         
         if (action.equals("view")) {
-          try {
-            while ((thisLine = br.readLine()) != null) {
-              if (thisLine.contains(isbn) || thisLine.contains(name)) {
-                System.out.print(thisLine);
-                break;
-              }
+          while ((thisLine = br.readLine()) != null) {
+            if (thisLine.contains(isbn) || thisLine.contains(name)) {
+              System.out.print(thisLine);
+              break;
             }
-          }
-          catch ( Exception ex ){
-            System.out.println(ex);
           }
         }
       }
