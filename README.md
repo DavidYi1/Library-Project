@@ -6,6 +6,7 @@ Due date is Feb. 22.
 ##Uncompleted
 1. Book Class
 2. Main Library Class 
+3. Tests Class
 
 ##Completed
 1. Borrower abstract class
