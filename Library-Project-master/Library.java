@@ -10,18 +10,18 @@ public class Library {
   public static void main (String args[]) {
     boolean run = true;
     String command = null;
-    ArrayList<String> AllbookData = new ArrayList<String>();
+    ArrayList<String> allBookData = new ArrayList<String>();
     ArrayList<Book> library_books = new ArrayList<Book>();
     BufferedReader br = new BufferedReader(new FileReader("books.txt"));
     String line;
     
-    while(!(br.readline() == null)){
+    while (br.readline() != null) {
       line = br.readline();
       bookdata.add(line);
     }
     
-    for(int i = 0; i < AllBookData.size(); i++){
-      String bookData = AllBookData.get(i);
+    for(int i = 0; i < allBookData.size(); i++){
+      String bookData = allBookData.get(i);
       String[] bookinfo = bookData.split(","); //split based on comma delimited format
       String title = bookinfo[0];
       String isbn = bookinfo[1];
