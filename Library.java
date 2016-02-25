@@ -3,15 +3,37 @@ import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.PrintWriter;
+
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Library {
   
-  public static void main (String args[]) {
+  public static void main (String[] args) {
     boolean run = true;
     String command = null;
-    PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter("books.txt")));
+    ArrayList<String> allBookData = new ArrayList<String>();
+    ArrayList<Book> library_books = new ArrayList<Book>();
     BufferedReader br = new BufferedReader(new FileReader("books.txt"));
+    String line;
+    
+    while (br.readLine() != null) {
+      line = br.readLine();
+      allBookData.add(line);
+    }
+    
+    //Shouldn't this go in my while loop? We need to identify what book they want first before we can add all the info to the array.
+    String[] bookInfo = new String[allBookData.size()];
+    for(int i = 0; i < allBookData.size(); i++) {
+      String bookData = allBookData.get(i);
+      bookInfo = bookData.split(","); //split based on comma delimited format
+      String title = bookInfo[0];
+      String isbn = bookInfo[1];
+      String genre = bookInfo[2];
+      String author = bookInfo[3];
+      String status = bookInfo[4];
+      
+    }
     
     Scanner kb = new Scanner(System.in);
     System.out.print("What would you like to access? (borrower/librarian)");
@@ -38,42 +60,38 @@ public class Library {
           name = kb.next();
         }
         
+        /**
+        while (br.readLine() != null) {
+          line = br.readLine();
+          allBookData.add(line);
+        }
+        */
+        
         String thisLine = null;
         if (action.equals("add")) {
-          pw.append(name);
+          
         }
         
         if (action.equals("remove")) {
-          try {
-            while ((thisLine = br.readLine()) != null) {
-              if (thisLine.contains(isbn) || thisLine.contains(name)) {
-                String trimmedLine = thisLine.trim();
-                if (trimmedLine.contains(name)) 
-                  continue;
-                pw.write(thisLine + System.getProperty("line.separator"));
-                break;
-              }
-            }
-          }
-          catch ( Exception ex ){
-            System.out.println(ex);
-          }
+          
         }
         
         if (action.equals("view")) {
-          try {
-            while ((thisLine = br.readLine()) != null) {
-              if (thisLine.contains(isbn) || thisLine.contains(name)) {
-                System.out.print(thisLine);
-                break;
-              }
-            }
-          }
-          catch ( Exception ex ){
-            System.out.println(ex);
+          for (int i = 0; i < bookInfo.length; i++) {
+            System.out.println(bookInfo[i]);
           }
         }
       }
+      
+      else {
+        run = false;
+        kb.close();
+        br.close();
+      }
     }
+    
+    PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter("books.txt")));
+    pw.close();
+    
   }
 }
