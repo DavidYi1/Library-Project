@@ -24,11 +24,12 @@ public class Book {
     daysDue = 0;
     dueDate = null;
   }
-  public String getTitle(){
+  
+  public String getTitle() {
     return title;
   }
   
-  public String getISBN(){
+  public String getISBN() {
     return isbn;
   }
   

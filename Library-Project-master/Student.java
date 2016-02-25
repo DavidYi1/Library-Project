@@ -17,7 +17,7 @@ public class Student extends Borrower {
     officialClass = oc;
   }
   
-  public boolean noSpace(){
+  public boolean noSpace() {
     for (int i = 0; i < books.length; i++) {
       if (books[i] == null) {
         return false;
@@ -30,7 +30,7 @@ public class Student extends Borrower {
     super.borrow(b);
   }
   
-  public void fullSpace(){
+  public void fullSpace() {
     System.out.print("You can not borrow anymore books");
   }
   
