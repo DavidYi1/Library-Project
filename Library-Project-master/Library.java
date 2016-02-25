@@ -40,7 +40,6 @@ public class Library {
     if user.equals("borrower");
     
     while (run) {
-      /*
       if (user.equals("librarian")) {
         
         System.out.print("Do you want to add, remove or view a book?");
@@ -84,7 +83,6 @@ public class Library {
         br.close();
       }
     }
-    */
     //PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter("books.txt")));
     //pw.close();
     
