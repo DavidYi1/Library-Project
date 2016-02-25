@@ -1,19 +1,17 @@
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.PrintWriter;
+import java.io.*;
+import java.util.*;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 
-import java.util.ArrayList;
-import java.util.Scanner;
 
 public class Library {
   
-  public static void main (String[] args) {
+  public static void main (String[] args) throws IOException {
     boolean run = true;
     String command = null;
     ArrayList<String> allBookData = new ArrayList<String>();
     ArrayList<Book> library_books = new ArrayList<Book>();
+    
     BufferedReader br = new BufferedReader(new FileReader("books.txt"));
     String line;
     
@@ -21,23 +19,25 @@ public class Library {
       line = br.readLine();
       allBookData.add(line);
     }
-    
-    //Shouldn't this go in my while loop? We need to identify what book they want first before we can add all the info to the array.
-    String[] bookInfo = new String[allBookData.size()];
+    //converts all the book data into Book objects
     for(int i = 0; i < allBookData.size(); i++) {
       String bookData = allBookData.get(i);
-      bookInfo = bookData.split(","); //split based on comma delimited format
+      String[] bookInfo = bookData.split(","); //split based on comma delimited format
       String title = bookInfo[0];
       String isbn = bookInfo[1];
       String genre = bookInfo[2];
       String author = bookInfo[3];
       String status = bookInfo[4];
-      
+      String dueDate = bookInfo[5];
+      String checkOut = bookInfo[6];
+      Book input = new Book(title, isbn, genre, author, status, dueDate, checkOut);
+      library_books.add(input);
     }
     
     Scanner kb = new Scanner(System.in);
     System.out.print("What would you like to access? (borrower/librarian)");
     String user = kb.next();
+    if user.equals("borrower");
     
     while (run) {
       if (user.equals("librarian")) {
@@ -60,13 +60,6 @@ public class Library {
           name = kb.next();
         }
         
-        /**
-        while (br.readLine() != null) {
-          line = br.readLine();
-          allBookData.add(line);
-        }
-        */
-        
         String thisLine = null;
         if (action.equals("add")) {
           
@@ -77,8 +70,14 @@ public class Library {
         }
         
         if (action.equals("view")) {
-          for (int i = 0; i < bookInfo.length; i++) {
-            System.out.println(bookInfo[i]);
+          for (int i = 0; i < library_books.size(); i++) {
+            if ((library_books.get(i).getTitle() == name) || (library_books.get(i).getISBN() == name)) {
+              System.out.println(library_books.get(i).getTitle());
+              System.out.println(library_books.get(i).getISBN());
+              System.out.println(library_books.get(i).getGenre());
+              System.out.println(library_books.get(i).getAuthor());
+              System.out.println(library_books.get(i).getStatus());
+            }
           }
         }
       }
@@ -89,9 +88,9 @@ public class Library {
         br.close();
       }
     }
+    //PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter("books.txt")));
+    //pw.close();
     
-    PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter("books.txt")));
-    pw.close();
-    
+    }
   }
 }
