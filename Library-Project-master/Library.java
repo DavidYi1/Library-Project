@@ -22,8 +22,9 @@ public class Library {
       allBookData.add(line);
     }
     
+    //Shouldn't this go in my while loop? We need to identify what book they want first before we can add all the info to the array.
     String[] bookInfo = new String[allBookData.size()];
-    for(int i = 0; i < allBookData.size(); i++){
+    for(int i = 0; i < allBookData.size(); i++) {
       String bookData = allBookData.get(i);
       bookInfo = bookData.split(","); //split based on comma delimited format
       String title = bookInfo[0];
@@ -59,7 +60,14 @@ public class Library {
           name = kb.next();
         }
         
-        String  thisLine = null;
+        /**
+        while (br.readLine() != null) {
+          line = br.readLine();
+          allBookData.add(line);
+        }
+        */
+        
+        String thisLine = null;
         if (action.equals("add")) {
           
         }
@@ -84,5 +92,6 @@ public class Library {
     
     PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter("books.txt")));
     pw.close();
+    
   }
 }
