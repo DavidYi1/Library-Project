@@ -9,10 +9,10 @@ public abstract class Borrower {
   
   public abstract boolean noSpace();
   
-  public void borrow(Book b) {
-    if(noSpace() == false) {
+  public void borrow(Book b, int checkoutTime){
+    if(noSpace() == false){
       Date date = new Date();
-      int noOfDays = 14;
+      int noOfDays = checkoutTime;
       GregorianCalendar calendar = new GregorianCalendar();
       calendar.setTime(date);
       calendar.add(Calendar.DATE, daysDue);
@@ -21,11 +21,12 @@ public abstract class Borrower {
         if (books[i] == null) {
           books[i] = b;
           dueDate[i] = date;
+          b.bookCheckedOut(date);
           return;
         }
       }
     }
-    else {
+    else{
       fullSpace();
     }
   }
