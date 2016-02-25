@@ -9,8 +9,8 @@ public abstract class Borrower {
   
   public abstract boolean noSpace();
   
-  public void borrow(Book b){
-    if(noSpace() == false){
+  public void borrow(Book b) {
+    if(noSpace() == false) {
       Date date = new Date();
       int noOfDays = 14;
       GregorianCalendar calendar = new GregorianCalendar();
@@ -25,7 +25,7 @@ public abstract class Borrower {
         }
       }
     }
-    else{
+    else {
       fullSpace();
     }
   }

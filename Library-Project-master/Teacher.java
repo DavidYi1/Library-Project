@@ -15,10 +15,10 @@ public class Teacher extends Borrower {
   
   public boolean noSpace(){
     for (int i = 0; i < books.length; i++) {
-        if (books[i] == null) {
-          return false;
-        }
+      if (books[i] == null) {
+        return false;
       }
+    }
     return true;
   }
   public void borrow(Book b) {
@@ -31,12 +31,12 @@ public class Teacher extends Borrower {
   
   public void returnBook(Book b) {
     for (int i = 0; i < books.length; i++) {
-        if (books[i] == b) {
-          books[i] = null;
-          dueDate[i] = null;
-          return;
-        }
+      if (books[i] == b) {
+        books[i] = null;
+        dueDate[i] = null;
+        return;
       }
+    }
     System.out.print("No such book borrowed");
   }
 }
