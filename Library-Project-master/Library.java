@@ -3,11 +3,13 @@ import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.PrintWriter;
+
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Library {
   
-  public static void main (String args[]) {
+  public static void main (String[] args) {
     boolean run = true;
     String command = null;
     ArrayList<String> allBookData = new ArrayList<String>();
@@ -15,23 +17,21 @@ public class Library {
     BufferedReader br = new BufferedReader(new FileReader("books.txt"));
     String line;
     
-    while (br.readline() != null) {
-      line = br.readline();
-      bookdata.add(line);
+    while (br.readLine() != null) {
+      line = br.readLine();
+      allBookData.add(line);
     }
     
+    String[] bookInfo = new String[allBookData.size()];
     for(int i = 0; i < allBookData.size(); i++){
       String bookData = allBookData.get(i);
-      String[] bookinfo = bookData.split(","); //split based on comma delimited format
-      String title = bookinfo[0];
-      String isbn = bookinfo[1];
-      String genre = bookinfo[2];
-      String author = bookinfo[3];
-      String status = bookinfo[4];
-      String check = bookinfo[5];
-      String daysDue = 
-
-
+      bookInfo = bookData.split(","); //split based on comma delimited format
+      String title = bookInfo[0];
+      String isbn = bookInfo[1];
+      String genre = bookInfo[2];
+      String author = bookInfo[3];
+      String status = bookInfo[4];
+      
     }
     
     Scanner kb = new Scanner(System.in);
@@ -69,8 +69,8 @@ public class Library {
         }
         
         if (action.equals("view")) {
-          for (int i = 0; i < bookinfo.length; i++) {
-            System.out.println(bookinfo[i]);
+          for (int i = 0; i < bookInfo.length; i++) {
+            System.out.println(bookInfo[i]);
           }
         }
       }
@@ -83,5 +83,6 @@ public class Library {
     }
     
     PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter("books.txt")));
+    pw.close();
   }
 }
