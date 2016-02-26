@@ -3,10 +3,10 @@ import java.util.GregorianCalendar;
 import java.util.Calendar;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+
 public class Tests {
+  
   public static void main(String args[]) {
-    // Instantiate a Date object
-    
     Date date = new Date();
     int noOfDays = 14;
     GregorianCalendar calendar = new GregorianCalendar();
@@ -26,24 +26,19 @@ public class Tests {
     System.out.println(dateString);
     System.out.println(d1);
     
-    
-    System.out.printf("%1$s %2$tB %2$td, %2$tY", 
-                      "Due date:", date);
+    System.out.printf("%1$s %2$tB %2$td, %2$tY", "Due date:", date);
   }
   
-  public static Date convertStringToDate(String dateString)
-  {
+  public static Date convertStringToDate(String dateString) {
     Date date = null;
     Date formatteddate = null;
     DateFormat df = new SimpleDateFormat("MMM dd, yyyy");
     try {
       date = df.parse(dateString);
-      
     }
-    catch ( Exception ex ){
+    catch ( Exception ex ) {
       System.out.println(ex);
     }
     return date;
   }
-  
 }
