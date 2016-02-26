@@ -18,6 +18,7 @@ public class Library {
       line = br.readLine();
       allBookData.add(line);
     }
+    
     //converts all the book data into Book objects
     for(int i = 0; i < allBookData.size(); i++) {
       String bookData = allBookData.get(i);
@@ -28,15 +29,14 @@ public class Library {
       String author = bookInfo[3];
       String status = bookInfo[4];
       String dueDate = bookInfo[5];
-      String checkOut = bookInfo[6];
-      Book input = new Book(title, isbn, genre, author, status, dueDate, checkOut);
+      String checkedOut = bookInfo[6];
+      Book input = new Book(title, isbn, genre, author, status, dueDate, checkedOut);
       library_books.add(input);
     }
     
     Scanner kb = new Scanner(System.in);
     System.out.print("What would you like to access? (borrower/librarian)");
     String user = kb.next();
-    if user.equals("borrower");
     
     while (run) {
       if (user.equals("librarian")) {
@@ -89,7 +89,5 @@ public class Library {
     }
     //PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter("books.txt")));
     //pw.close();
-    
-    }
   }
 }
