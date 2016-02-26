@@ -31,7 +31,6 @@ public class Book {
       checkedOut = true;
     else 
       checkedOut = false;
-    
   }
   
   public String getTitle(){
@@ -63,6 +62,7 @@ public class Book {
     checkedOut = false;
     dueDate = null;
   }
+  
   public Date convertStringToDate(String dateString) {
     Date date = null;
     Date formatteddate = null;

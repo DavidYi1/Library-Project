@@ -10,10 +10,11 @@ public class Library {
     String command = null;
     ArrayList<String> allBookData = new ArrayList<String>();
     ArrayList<Book> library_books = new ArrayList<Book>();
+    ArrayList<Book> checkedOutBooks = new ArrayList<Book>();
     
     BufferedReader br = new BufferedReader(new FileReader("books.txt"));
-    String line;
     
+    String line;
     while (br.readLine() != null) {
       line = br.readLine();
       allBookData.add(line);
@@ -61,12 +62,27 @@ public class Library {
         
         String thisLine = null;
         if (action.equals("add")) {
-          
+          for (int i = 0; i < library_books.size(); i++) {
+            if ((library_books.get(i).getTitle() == name) || (library_books.get(i).getISBN() == name)) {
+              library_books.get(i).bookReturned();
+            }
+          }
         }
         
+        /**
         if (action.equals("remove")) {
-          
+          System.out.print("For student or teacher?");
+          String rec = kb.next();
+          for (int i = 0; i < library_books.size(); i++) {
+            if ((library_books.get(i).getTitle() == name) || (library_books.get(i).getISBN() == name)) {
+              if (rec.equals("student"))
+                library_books.get(i).bookCheckedOut(Date ???);
+              if (rec.equals("teacher"))
+                library_books.get(i).bookCheckedOut(Date ???);
+            }
+          }
         }
+        */
         
         if (action.equals("view")) {
           for (int i = 0; i < library_books.size(); i++) {
