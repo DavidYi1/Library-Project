@@ -10,7 +10,6 @@ public class Library {
     String command = null;
     ArrayList<String> allBookData = new ArrayList<String>();
     ArrayList<Book> library_books = new ArrayList<Book>();
-    ArrayList<Book> checkedOutBooks = new ArrayList<Book>();
     
     BufferedReader br = new BufferedReader(new FileReader("books.txt"));
     
