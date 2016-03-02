@@ -95,12 +95,8 @@ public class Library {
       }
       
       else {
-        run = false;
-        kb.close();
-        br.close();
+        
       }
     }
-    //PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter("books.txt")));
-    //pw.close();
   }
 }
