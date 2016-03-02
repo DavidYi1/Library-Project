@@ -68,20 +68,18 @@ public class Library {
           }
         }
         
-        /**
         if (action.equals("remove")) {
           System.out.print("For student or teacher?");
           String rec = kb.next();
           for (int i = 0; i < library_books.size(); i++) {
             if ((library_books.get(i).getTitle() == name) || (library_books.get(i).getISBN() == name)) {
               if (rec.equals("student"))
-                library_books.get(i).bookCheckedOut(Date ???);
+                library_books.get(i).bookCheckedOut(new Date());
               if (rec.equals("teacher"))
-                library_books.get(i).bookCheckedOut(Date ???);
+                library_books.get(i).bookCheckedOut(new Date());
             }
           }
         }
-        */
         
         if (action.equals("view")) {
           for (int i = 0; i < library_books.size(); i++) {
