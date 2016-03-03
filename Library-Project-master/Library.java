@@ -78,14 +78,14 @@ public class Library {
         System.out.print("Please enter your command (search/browse/checkout/return/view checked out books/log off)");
         action = kb.nextLine();
         
-        if(action.equals("search")){
+        if (action.equals("search")) {
           System.out.print("Enter an ISBN or Title");
           String query = kb.nextLine();
           
-          for(Book x : library_books){
-            if(x.getTitle().equals(query) || x.getISBN().equals(query)){
+          for (Book x : library_books) {
+            if (x.getTitle().equals(query) || x.getISBN().equals(query)) {
              System.out.print("The book" + x.getTitle() + "(" + x.getISBN() + ")" + " is currently ");
-             if(x.checkAvailable()){
+             if (x.checkAvailable()) {
                System.out.println("available");
              }
              else {
@@ -112,8 +112,8 @@ public class Library {
         if (action.equals("checkout")){
           System.out.print("Enter the book name you wish to borrow. Make sure that it is avaiable first");
           String query = kb.nextLine();
-          for(Book x : library_books){
-            if(x.getTitle().equals(query) && x.checkAvailable()){
+          for (Book x : library_books) {
+            if (x.getTitle().equals(query) && x.checkAvailable()) {
               System.out.print(x.getTitle() + " is the book being borrowed");
               studentUser.borrow(x);
               x.setLastHolder(studentUser.getName());
@@ -122,13 +122,13 @@ public class Library {
           action = " ";
         }
         
-        if(action.equals("return")){
+        if (action.equals("return")) {
           System.out.print("Enter the title of the book you are returning");
           String query = kb.nextLine();
           Book returningBook = studentUser.findBook(query);
           studentUser.returnBook(returningBook);
-          for(Book x : library_books){
-           if(x.equals(returningBook))
+          for (Book x : library_books) {
+           if (x.equals(returningBook))
              x.bookReturned();
           }
           action = " ";
