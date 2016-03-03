@@ -3,9 +3,8 @@ import java.util.*;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 
-
 public class Tests2 {
-  public static void main(String args[]){
+  public static void main(String args[]) {
     BufferedReader br = new BufferedReader(new FileReader("books.txt"));
     String line;
     
