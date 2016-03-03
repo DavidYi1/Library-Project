@@ -13,16 +13,19 @@ public class Book {
   private String status;
   private Date dueDate;
   private boolean checkedOut;
+  private String lastHolder;
+
   
-  public Book(String t, String i, String g, String a, String s, String dd, String check) {
+  public Book(String t, String i, String g, String a, String s, String dd, String check, String h) {
     title = t;
     isbn = i;
     genre = g;
     author = a;
     status = s;
     //if there exists nothing between s and check then this should be false and the book is in the library
-    if (!dd.equals(""))
+    if (!dd.equals(" ")){
       dueDate = convertStringToDate(dd);
+    }
     else 
       dueDate = null;
     
@@ -32,6 +35,7 @@ public class Book {
     else 
       checkedOut = false;
     
+    lastHolder = h;
   }
   
   public String getTitle(){
@@ -42,16 +46,8 @@ public class Book {
     return isbn;
   }
   
-  public String getGenre(){
-    return isbn;
-  }
-  
-  public String getAuthor(){
-    return author;
-  }
-  
-  public String getStatus(){
-    return status;
+  public void setLastHolder(String s){
+    lastHolder = s;
   }
   
   public void bookCheckedOut(Date dueIn) {
@@ -63,23 +59,24 @@ public class Book {
     checkedOut = false;
     dueDate = null;
   }
-  public Date convertStringToDate(String dateString) {
+  public Date convertStringToDate(String dateString)
+  {
     Date date = null;
     Date formatteddate = null;
     DateFormat df = new SimpleDateFormat("MMM dd, yyyy");
-    try {
-      date = df.parse(dateString);
-      
+    try{
+        date = df.parse(dateString);
+
     }
-    catch ( Exception ex ) {
-      System.out.println(ex);
+    catch ( Exception ex ){
+        System.out.println(ex);
     }
     return date;
   }
   
   public String convertDateToString(Date dd){
-    SimpleDateFormat sdfr = new SimpleDateFormat("MMM dd, yyyy");
-    String dateString = sdfr.format(dd);
-    return dateString;
+   SimpleDateFormat sdfr = new SimpleDateFormat("MMM dd, yyyy");
+   String dateString = sdfr.format(dd);
+   return dateString;
   }
 }
