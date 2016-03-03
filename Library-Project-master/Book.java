@@ -14,7 +14,6 @@ public class Book {
   private Date dueDate;
   private boolean checkedOut;
   private String lastHolder;
-
   
   public Book(String t, String i, String g, String a, String s, String dd, String check, String h) {
     title = t;
