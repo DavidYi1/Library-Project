@@ -82,11 +82,7 @@ public class Library {
         if (action.equals("view")) {
           for (int i = 0; i < library_books.size(); i++) {
             if ((library_books.get(i).getTitle() == name) || (library_books.get(i).getISBN() == isbn)) {
-              System.out.println(library_books.get(i).getTitle());
-              System.out.println(library_books.get(i).getISBN());
-              System.out.println(library_books.get(i).getGenre());
-              System.out.println(library_books.get(i).getAuthor());
-              System.out.println(library_books.get(i).getStatus());
+              
             }
           }
         }
