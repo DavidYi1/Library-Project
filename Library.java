@@ -73,11 +73,7 @@ public class Library {
           System.out.print("For student or teacher?");
           String rec = kb.next();
           for (int i = 0; i < library_books.size(); i++) {
-            if ((library_books.get(i).getTitle() == name) || (library_books.get(i).getISBN() == name)) {
-              if (rec.equals("student"))
-                library_books.get(i).bookCheckedOut(new Date());
-              if (rec.equals("teacher"))
-                library_books.get(i).bookCheckedOut(new Date());
+            if ((library_books.get(i).getTitle() == name) || (library_books.get(i).getISBN() == isbn)) {
               library_books.remove(i);
             }
           }
@@ -85,7 +81,7 @@ public class Library {
         
         if (action.equals("view")) {
           for (int i = 0; i < library_books.size(); i++) {
-            if ((library_books.get(i).getTitle() == name) || (library_books.get(i).getISBN() == name)) {
+            if ((library_books.get(i).getTitle() == name) || (library_books.get(i).getISBN() == isbn)) {
               System.out.println(library_books.get(i).getTitle());
               System.out.println(library_books.get(i).getISBN());
               System.out.println(library_books.get(i).getGenre());
