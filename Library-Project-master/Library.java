@@ -44,8 +44,8 @@ public class Library {
     String[] StudentInfo = stu.readLine().split(",");
     Student studentUser = new Student(StudentInfo[0],StudentInfo[1],StudentInfo[2], StudentInfo[3], StudentInfo[4]);    
     while ((line = stu.readLine()) != null) {
-      for(Book x : library_books){
-        if(x.getTitle().equals(line)){
+      for (Book x : library_books) {
+        if (x.getTitle().equals(line)) {
           studentUser.addBook(x);
         }
       }
