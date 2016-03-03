@@ -74,16 +74,16 @@ public class Book {
     Date date = null;
     Date formatteddate = null;
     DateFormat df = new SimpleDateFormat("MMM dd yyyy");
-    try{
+    try {
       date = df.parse(dateString);
     }
-    catch ( Exception ex ){
+    catch ( Exception ex ) {
       System.out.println(ex);
     }
     return date;
   }
   
-  public String convertDateToString(Date dd){
+  public String convertDateToString(Date dd) {
     SimpleDateFormat sdfr = new SimpleDateFormat("MMM dd yyyy");
     String dateString = sdfr.format(dd);
     return dateString;
