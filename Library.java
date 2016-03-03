@@ -20,7 +20,7 @@ public class Library {
     }
     
     //converts all the book data into Book objects
-    for(int i = 0; i < allBookData.size(); i++) {
+    for (int i = 0; i < allBookData.size(); i++) {
       String bookData = allBookData.get(i);
       String[] bookInfo = bookData.split(","); //split based on comma delimited format
       String title = bookInfo[0];
@@ -59,7 +59,7 @@ public class Library {
           name = kb.next();
         }
         
-        String thisLine = null;
+        /**
         if (action.equals("add")) {
           for (int i = 0; i < library_books.size(); i++) {
             if ((library_books.get(i).getTitle() == name) || (library_books.get(i).getISBN() == name)) {
@@ -67,6 +67,7 @@ public class Library {
             }
           }
         }
+        */
         
         if (action.equals("remove")) {
           System.out.print("For student or teacher?");
@@ -95,8 +96,21 @@ public class Library {
         }
       }
       
-      else {
+      else if (user.equals("borrower")) {
+        System.out.print("Are you a student or teacher?");
+        String borrower = kb.next();
         
+        if (borrower.equals("student")) {
+          
+        }
+        
+        else if (borrower.equals("teacher")) {
+          
+        }
+      }
+      
+      else {
+        kb.close();
       }
     }
   }
