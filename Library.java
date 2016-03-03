@@ -77,6 +77,7 @@ public class Library {
                 library_books.get(i).bookCheckedOut(new Date());
               if (rec.equals("teacher"))
                 library_books.get(i).bookCheckedOut(new Date());
+              library_books.remove(i);
             }
           }
         }
