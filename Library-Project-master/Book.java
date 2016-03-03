@@ -41,6 +41,13 @@ public class Book {
   public String getTitle(){
     return title;
   }
+  public boolean checkAvailable(){
+   return !checkedOut; 
+  }
+  
+  public String getGenre(){
+    return genre;
+  }
   
   public String getISBN(){
     return isbn;
@@ -59,11 +66,16 @@ public class Book {
     checkedOut = false;
     dueDate = null;
   }
+  
+  public Date getDateDue(){
+   return dueDate;
+  }
+  
   public Date convertStringToDate(String dateString)
   {
     Date date = null;
     Date formatteddate = null;
-    DateFormat df = new SimpleDateFormat("MMM dd, yyyy");
+    DateFormat df = new SimpleDateFormat("MMM dd yyyy");
     try{
         date = df.parse(dateString);
 
@@ -75,7 +87,7 @@ public class Book {
   }
   
   public String convertDateToString(Date dd){
-   SimpleDateFormat sdfr = new SimpleDateFormat("MMM dd, yyyy");
+   SimpleDateFormat sdfr = new SimpleDateFormat("MMM dd yyyy");
    String dateString = sdfr.format(dd);
    return dateString;
   }
