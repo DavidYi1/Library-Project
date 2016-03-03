@@ -23,9 +23,8 @@ public class Book {
     author = a;
     status = s;
     //if there exists nothing between s and check then this should be false and the book is in the library
-    if (!dd.equals(" ")){
+    if (!dd.equals(" "))
       dueDate = convertStringToDate(dd);
-    }
     else 
       dueDate = null;
     
@@ -34,26 +33,26 @@ public class Book {
       checkedOut = true;
     else 
       checkedOut = false;
-    
+      
     lastHolder = h;
   }
   
-  public String getTitle(){
+  public String getTitle() {
     return title;
   }
-  public boolean checkAvailable(){
+  public boolean checkAvailable() {
    return !checkedOut; 
   }
   
-  public String getGenre(){
+  public String getGenre() {
     return genre;
   }
   
-  public String getISBN(){
+  public String getISBN() {
     return isbn;
   }
   
-  public void setLastHolder(String s){
+  public void setLastHolder(String s) {
     lastHolder = s;
   }
   
@@ -67,28 +66,26 @@ public class Book {
     dueDate = null;
   }
   
-  public Date getDateDue(){
+  public Date getDateDue() {
    return dueDate;
   }
   
-  public Date convertStringToDate(String dateString)
-  {
+  public Date convertStringToDate(String dateString) {
     Date date = null;
     Date formatteddate = null;
     DateFormat df = new SimpleDateFormat("MMM dd yyyy");
     try{
-        date = df.parse(dateString);
-
+      date = df.parse(dateString);
     }
     catch ( Exception ex ){
-        System.out.println(ex);
+      System.out.println(ex);
     }
     return date;
   }
   
   public String convertDateToString(Date dd){
-   SimpleDateFormat sdfr = new SimpleDateFormat("MMM dd yyyy");
-   String dateString = sdfr.format(dd);
-   return dateString;
+    SimpleDateFormat sdfr = new SimpleDateFormat("MMM dd yyyy");
+    String dateString = sdfr.format(dd);
+    return dateString;
   }
 }
