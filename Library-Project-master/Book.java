@@ -40,7 +40,7 @@ public class Book {
     return title;
   }
   public boolean checkAvailable() {
-   return !checkedOut; 
+    return !checkedOut; 
   }
   
   public String getGenre() {
@@ -66,7 +66,7 @@ public class Book {
   }
   
   public Date getDateDue() {
-   return dueDate;
+    return dueDate;
   }
   
   public Date convertStringToDate(String dateString) {
