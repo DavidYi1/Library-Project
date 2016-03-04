@@ -128,8 +128,8 @@ public class Library {
           Book returningBook = studentUser.findBook(query);
           studentUser.returnBook(returningBook);
           for (Book x : library_books) {
-           if (x.equals(returningBook))
-             x.bookReturned();
+            if (x.equals(returningBook))
+              x.bookReturned();
           }
         }
       }
@@ -162,8 +162,8 @@ public class Library {
           
           System.out.println("You should take a look at these books currently available:");
           for (Book x : library_books) {
-           if (x.getGenre().equals(query) && x.checkAvailable())
-             System.out.println(x.getTitle() + "(" + x.getISBN() + ")" );
+            if (x.getGenre().equals(query) && x.checkAvailable())
+              System.out.println(x.getTitle() + "(" + x.getISBN() + ")" );
           }
           System.out.println("If none of these books pique your interest, please wait until some other books are returned or more books are obtained by the library");
         }
@@ -187,8 +187,8 @@ public class Library {
           Book returningBook = teacherUser.findBook(query);
           teacherUser.returnBook(returningBook);
           for (Book x : library_books) {
-           if (x.equals(returningBook))
-             x.bookReturned();
+            if (x.equals(returningBook))
+              x.bookReturned();
           }
         }
       }
@@ -246,7 +246,7 @@ public class Library {
       }
       
       else { // if not any of the users.
-	System.out.println("Please enter borrower or librarian."); 
+        System.out.println("Please enter borrower or librarian."); 
       }
     }
   }
