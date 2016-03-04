@@ -23,7 +23,7 @@ public class Book {
     status = s;
     
     //if there exists nothing between s and check then this should be false and the book is in the library
-    if (!dd.equals(" "))
+    if (!dd.equals(""))
       dueDate = convertStringToDate(dd);
     else 
       dueDate = null;
