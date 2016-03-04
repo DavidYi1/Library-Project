@@ -194,7 +194,7 @@ public class Library {
       }
       
       if (user.equals("librarian")) {
-        System.out.print("Please enter your command (add/remove/view book history/log off): ");
+        System.out.print("Please enter your command (add/remove/view history/log off): ");
         action = kb.nextLine();
         
         if (action.equals("add")) {
@@ -228,7 +228,7 @@ public class Library {
           }
         }
         
-        if (action.equals("view")) {
+        if (action.substring(0, 4).equals("view")) {
           System.out.print("Enter ISBN or Title: ");
           String query = kb.nextLine();
           
