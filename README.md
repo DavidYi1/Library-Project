@@ -1,7 +1,7 @@
 # Library-Project
 
 ##Period 3: Qiu Library Project
-Due date is March 4th. 
+Due March 5th at 11:00PM on DropBox. 
 
 ##Uncompleted
 1. Main Library Class 
