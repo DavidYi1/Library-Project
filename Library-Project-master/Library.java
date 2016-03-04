@@ -109,7 +109,7 @@ public class Library {
           action = " ";
         }
         
-        if (action.equals("checkout")){
+        if (action.equals("checkout")) {
           System.out.print("Enter the book name you wish to borrow. Make sure that it is avaiable first");
           String query = kb.nextLine();
           for (Book x : library_books) {
@@ -135,15 +135,15 @@ public class Library {
         }
       }
       
-      if (user.equals("teacher")){
+      if (user.equals("teacher")) {
         System.out.print("Please enter your command (search/browse/checkout/return/view checked out books/log off)");
         action = kb.nextLine();
         
-        if (action.equals("search")){
+        if (action.equals("search")) {
           System.out.print("Enter an ISBN or Title");
           String query = kb.nextLine();
           
-          for(Book x : library_books){
+          for(Book x : library_books) {
             if(x.getTitle().equals(query) || x.getISBN().equals(query)){
              System.out.print("The book" + x.getTitle() + "(" + x.getISBN() + ")" + " is currently ");
              if (x.checkAvailable()) {
@@ -162,14 +162,13 @@ public class Library {
           System.out.print("Enter a genre you are interested in");
           String query = kb.nextLine();
           System.out.println("You should take a look at these books currently available:");
-          for(Book x : library_books){
+          for (Book x : library_books) {
            if (x.getGenre().equals(query) && x.checkAvailable())
              System.out.println(x.getTitle() + "(" + x.getISBN() + ")" );
           }
           System.out.println("If none of these books pique your interest, please wait until some other books are returned or more books are obtained by the library");
           action = " ";
         }
-        
         
         if (action.equals("checkout")) {
           System.out.print("Enter the book name you wish to borrow. Make sure that it is avaiable first");
@@ -196,8 +195,8 @@ public class Library {
           action = null;
         }
       }
-
-      /*if (user.equals("librarian")) {
+      
+      if (user.equals("librarian")) {
         
         System.out.print("Do you want to add, remove or view a book?");
         action = kb.next();
@@ -226,14 +225,10 @@ public class Library {
           }
           
           if (action.equals("remove")) {
-          System.out.print("For student or teacher?");
-          String rec = kb.next();
-          for (int i = 0; i < library_books.size(); i++) {
-            if ((library_books.get(i).getTitle() == name) || (library_books.get(i).getISBN() == name)) {
-              if (rec.equals("student"))
-                library_books.get(i).bookCheckedOut(Date ???);
-              if (rec.equals("teacher"))
-                library_books.get(i).bookCheckedOut(Date ???);
+            for (int i = 0; i < library_books.size(); i++) {
+              if ((library_books.get(i).getTitle() == name) || (library_books.get(i).getISBN() == name)) {
+                library_books.remove(i);
+              }
             }
           }
         }
@@ -251,13 +246,12 @@ public class Library {
           }
         }
       }
-        
-        */
       
       else if (action.equals("log off")) {
         run = false;
         kb.close();
       }
+      
       else { // if not any of the users.
 	System.out.print("Please enter borrower or librarian"); 
 	user = kb.nextLine();
@@ -265,5 +259,3 @@ public class Library {
     }
   }
 }
-
-
