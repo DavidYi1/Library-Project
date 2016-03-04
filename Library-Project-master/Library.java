@@ -123,7 +123,7 @@ public class Library {
         }
         
         if (action.equals("return")) {
-          System.out.print("Enter the title of the book you are returning");
+          System.out.print("Enter the title of the book you are returning: ");
           String query = kb.nextLine();
           Book returningBook = studentUser.findBook(query);
           studentUser.returnBook(returningBook);
@@ -154,7 +154,6 @@ public class Library {
             }
           }
           System.out.println("These are the books currently avaiable based on your search. If the book you want didn't appear, please wait until it is returned or another copy is obtained by the library");
-          action = null; //reset the action
         }
         
         if (action.equals("browse")) {
@@ -199,19 +198,19 @@ public class Library {
         action = kb.nextLine();
         
         if (action.equals("add")) {
-          System.out.print("Enter title: ");
+          System.out.print("Enter Title: ");
           String t = kb.next();
           
-          System.out.print("Enter isbn: ");
+          System.out.print("Enter ISBN: ");
           String i = kb.next();
           
-          System.out.print("Enter genre: ");
+          System.out.print("Enter Genre: ");
           String g = kb.next();
           
-          System.out.print("Enter author: ");
+          System.out.print("Enter Author: ");
           String a = kb.next();
           
-          System.out.print("Enter status: ");
+          System.out.print("Enter Status: ");
           String s = kb.next();
           
           Book b = new Book(t, i, g, a, s, "", "false", "")
