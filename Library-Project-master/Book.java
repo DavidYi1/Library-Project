@@ -40,6 +40,7 @@ public class Book {
   public String getTitle() {
     return title;
   }
+  
   public boolean checkAvailable() {
     return !checkedOut; 
   }
@@ -50,6 +51,10 @@ public class Book {
   
   public String getISBN() {
     return isbn;
+  }
+  
+  public String getLastHolder() {
+    return lastHolder;
   }
   
   public void setLastHolder(String s) {
