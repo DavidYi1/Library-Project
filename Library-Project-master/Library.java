@@ -5,9 +5,9 @@ import java.text.SimpleDateFormat;
 
 public class Library {
   
-  public static void main (String[] args) throws IOException {
+  public static void main(String[] args) throws IOException {
     boolean run = true;
-    String action = " ";
+    String action = "";
     
     //make library
     ArrayList<String> allBookData = new ArrayList<String>();
@@ -22,7 +22,7 @@ public class Library {
     br.close();
 
     //converts all the book data into Book objects
-    for(int i = 0; i < allBookData.size(); i++) {
+    for (int i = 0; i < allBookData.size(); i++) {
       String bookData = allBookData.get(i);
       String[] bookInfo = bookData.split(","); 
       //split based on comma delimited format
@@ -57,8 +57,8 @@ public class Library {
     String[] TeacherInfo = teach.readLine().split(",");
     Teacher teacherUser = new Teacher(TeacherInfo[0],TeacherInfo[1]); 
     while ((line = teach.readLine()) != null) {
-      for(Book x : library_books){
-        if(x.getTitle().equals(line))
+      for (Book x : library_books) {
+        if (x.getTitle().equals(line))
           teacherUser.addBook(x);
       }
     }
@@ -69,17 +69,17 @@ public class Library {
     String user = kb.next();
     
     while (run) {
-      if (user.equals("borrower")){
-        System.out.print("Are you a student or teacher?");
-        user = kb.nextLine();
+      if (user.equals("borrower")) {
+        System.out.print("Are you a student or teacher? ");
+        user = kb.next();
       }
       
       if (user.equals("student")){
-        System.out.print("Please enter your command (search/browse/checkout/return/view checked out books/log off)");
-        action = kb.nextLine();
+        System.out.print("Please enter your command (search/browse/checkout/return/log off): ");
+        action = kb.next();
         
         if (action.equals("search")) {
-          System.out.print("Enter an ISBN or Title");
+          System.out.print("Enter ISBN or Title: ");
           String query = kb.nextLine();
           
           for (Book x : library_books) {
@@ -94,24 +94,25 @@ public class Library {
             }
           }
           System.out.println("These are the books currently avaiable based on your search. If the book you want didn't appear, please wait until it is returned or another copy is obtained by the library");
-          action = " "; //reset the action
         }
         
         if (action.equals("browse")) {
           System.out.print("Enter a genre you are interested in");
           String query = kb.nextLine();
+          
           System.out.println("You should take a look at these books currently available:");
           for (Book x : library_books) {
-           if (x.getGenre().equals(query) && x.checkAvailable())
-             System.out.println(x.getTitle() + "(" + x.getISBN() + ")" );
+            if (x.getGenre().equals(query) && x.checkAvailable())
+              System.out.println(x.getTitle() + "(" + x.getISBN() + ")" );
           }
+          
           System.out.println("If none of these books pique your interest, please wait until some other books are returned or more books are obtained by the library");
-          action = " ";
         }
         
         if (action.equals("checkout")) {
           System.out.print("Enter the book name you wish to borrow. Make sure that it is avaiable first");
           String query = kb.nextLine();
+          
           for (Book x : library_books) {
             if (x.getTitle().equals(query) && x.checkAvailable()) {
               System.out.print(x.getTitle() + " is the book being borrowed");
@@ -119,7 +120,6 @@ public class Library {
               x.setLastHolder(studentUser.getName());
             }
           }
-          action = " ";
         }
         
         if (action.equals("return")) {
@@ -131,27 +131,26 @@ public class Library {
            if (x.equals(returningBook))
              x.bookReturned();
           }
-          action = " ";
         }
       }
       
       if (user.equals("teacher")) {
-        System.out.print("Please enter your command (search/browse/checkout/return/view checked out books/log off)");
+        System.out.print("Please enter your command (search/browse/checkout/return/log off): ");
         action = kb.nextLine();
         
         if (action.equals("search")) {
-          System.out.print("Enter an ISBN or Title");
+          System.out.print("Enter ISBN or Title: ");
           String query = kb.nextLine();
           
-          for(Book x : library_books) {
-            if(x.getTitle().equals(query) || x.getISBN().equals(query)){
-             System.out.print("The book" + x.getTitle() + "(" + x.getISBN() + ")" + " is currently ");
-             if (x.checkAvailable()) {
-               System.out.println("available");
-             }
-             else {
-               System.out.println("unavailable");
-             }
+          for (Book x : library_books) {
+            if (x.getTitle().equals(query) || x.getISBN().equals(query)) {
+              System.out.print("The book" + x.getTitle() + "(" + x.getISBN() + ")" + " is currently ");
+              if (x.checkAvailable()) {
+                System.out.println("available");
+              }
+              else {
+                System.out.println("unavailable");
+              }
             }
           }
           System.out.println("These are the books currently avaiable based on your search. If the book you want didn't appear, please wait until it is returned or another copy is obtained by the library");
@@ -159,20 +158,21 @@ public class Library {
         }
         
         if (action.equals("browse")) {
-          System.out.print("Enter a genre you are interested in");
+          System.out.print("Enter a genre you are interested in: ");
           String query = kb.nextLine();
+          
           System.out.println("You should take a look at these books currently available:");
           for (Book x : library_books) {
            if (x.getGenre().equals(query) && x.checkAvailable())
              System.out.println(x.getTitle() + "(" + x.getISBN() + ")" );
           }
           System.out.println("If none of these books pique your interest, please wait until some other books are returned or more books are obtained by the library");
-          action = " ";
         }
         
         if (action.equals("checkout")) {
           System.out.print("Enter the book name you wish to borrow. Make sure that it is avaiable first");
           String query = kb.nextLine();
+          
           for (Book x : library_books) {
             if (x.getTitle().equals(query) && x.checkAvailable()) {
               System.out.print(x.getTitle() + " is the book being borrowed");
@@ -180,7 +180,6 @@ public class Library {
               x.setLastHolder(teacherUser.getName());
             }
           }
-          action = " ";
         }
         
         if (action.equals("return")) {
@@ -188,73 +187,67 @@ public class Library {
           String query = kb.nextLine();
           Book returningBook = teacherUser.findBook(query);
           teacherUser.returnBook(returningBook);
-          for(Book x : library_books){
-           if(x.equals(returningBook))
+          for (Book x : library_books) {
+           if (x.equals(returningBook))
              x.bookReturned();
           }
-          action = null;
         }
       }
       
       if (user.equals("librarian")) {
+        System.out.print("Please enter your command (add/remove/view book history/log off): ");
+        action = kb.nextLine();
         
-        System.out.print("Do you want to add, remove or view a book?");
-        action = kb.next();
-        
-        System.out.print("Do you want to enter book ISBN or name?");
-        String opt = kb.next();
-        
-        String isbn = null;
-        if (opt.equals("ISBN")) {
-          System.out.print("Enter ISBN: ");
-          isbn = kb.next();
-        }
-        
-        String name = null;
-        if (opt.equals("name")) {
-          System.out.print("Enter name: ");
-          name = kb.next();
-        }
-        
-        String thisLine = null;
         if (action.equals("add")) {
-          for (int i = 0; i < library_books.size(); i++) {
-            if ((library_books.get(i).getTitle() == name) || (library_books.get(i).getISBN() == name)) {
-              library_books.get(i).bookReturned();
-            }
-          }
+          System.out.print("Enter title: ");
+          String t = kb.next();
           
-          if (action.equals("remove")) {
-            for (int i = 0; i < library_books.size(); i++) {
-              if ((library_books.get(i).getTitle() == name) || (library_books.get(i).getISBN() == name)) {
-                library_books.remove(i);
-              }
+          System.out.print("Enter isbn: ");
+          String i = kb.next();
+          
+          System.out.print("Enter genre: ");
+          String g = kb.next();
+          
+          System.out.print("Enter author: ");
+          String a = kb.next();
+          
+          System.out.print("Enter status: ");
+          String s = kb.next();
+          
+          Book b = new Book(t, i, g, a, s, "", "false", "")
+          library_books.add(b);
+        }
+        
+        if (action.equals("remove")) {
+          System.out.print("Enter ISBN or Title: ");
+          String query = kb.nextLine();
+          
+          for (int i = 0; i < library_books.size(); i++) {
+            if ((library_books.get(i).getTitle().equals(query)) || (library_books.get(i).getISBN().equals(query))) {
+              library_books.remove(i);
             }
           }
         }
         
         if (action.equals("view")) {
-          for (int i = 0; i < library_books.size(); i++) {
-            if ((library_books.get(i).getTitle() == name) || (library_books.get(i).getISBN() == name)) {
-              System.out.println(library_books.get(i).getTitle());
-              System.out.println(library_books.get(i).getISBN());
-              System.out.println(library_books.get(i).getGenre());
-              System.out.println(library_books.get(i).getAuthor());
-              System.out.println(library_books.get(i).getStatus());
-              }
+          System.out.print("Enter ISBN or Title: ");
+          String query = kb.nextLine();
+          
+          for (Book x : library_books) {
+            if (x.getTitle().equals(query) || x.getISBN().equals(query)) {
+              System.out.println(x.getLastHolder());
             }
           }
         }
       }
       
-      else if (action.equals("log off")) {
+      if (action.equals("log off")) {
         run = false;
         kb.close();
       }
       
       else { // if not any of the users.
-	System.out.print("Please enter borrower or librarian"); 
-	user = kb.nextLine();
+	System.out.println("Please enter borrower or librarian."); 
       }
     }
   }
