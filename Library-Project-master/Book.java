@@ -21,6 +21,7 @@ public class Book {
     genre = g;
     author = a;
     status = s;
+    
     //if there exists nothing between s and check then this should be false and the book is in the library
     if (!dd.equals(" "))
       dueDate = convertStringToDate(dd);
