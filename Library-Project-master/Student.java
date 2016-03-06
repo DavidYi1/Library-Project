@@ -1,8 +1,4 @@
-import java.util.Date;
-import java.util.GregorianCalendar;
-import java.util.Calendar;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
+import java.util.*;
 
 public class Student extends Borrower {
   
@@ -106,5 +102,14 @@ public class Student extends Borrower {
       if(books[i] != null)
         System.out.println(books[i].getTitle());
     }
+  }
+  
+  public ArrayList<String> listBorrowedBooks(){
+    ArrayList<String> borrowedBooks = new ArrayList<String>();
+    for (int i = 0; i < books.length; i++){
+      if(books[i] != null)
+        borrowedBooks.add(books[i].getTitle());
+    }
+    return borrowedBooks;
   }
 }

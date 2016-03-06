@@ -1,8 +1,5 @@
-import java.util.Date;
-import java.util.GregorianCalendar;
-import java.util.Calendar;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
+import java.util.*;
+
 public class Teacher extends Borrower {
   
   private Book[] books = new Book[4]; //need this here for borrow method to work
@@ -102,5 +99,13 @@ public void borrow(Book b){
       if(books[i] != null)
         System.out.println(books[i].getTitle());
     }
+  }
+  public ArrayList<String> listBorrowedBooks(){
+    ArrayList<String> borrowedBooks = new ArrayList<String>();
+    for (int i = 0; i < books.length; i++){
+      if(books[i] != null)
+        borrowedBooks.add(books[i].getTitle());
+    }
+    return borrowedBooks;
   }
 }
