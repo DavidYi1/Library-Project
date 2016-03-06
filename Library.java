@@ -68,7 +68,7 @@ public class Library {
     //Find user
     Scanner kb = new Scanner(System.in);
     System.out.print("What account type would you like to access? (student/teacher/librarian)");
-    String user = kb.next();
+    String user = kb.nextLine();
     
     System.out.println("");
     
@@ -76,11 +76,11 @@ public class Library {
     //If user is of borrower class
     if (user.equals("student") || user.equals("teacher")) {
       System.out.print("Please enter your command (search/browse/checkout/return/view checked-out books)");
-      action = kb.next();
+      action = kb.nextLine();
       
       if (action.equals("search")) {
         System.out.print("Enter an ISBN or Title");
-        String query = kb.next();
+        String query = kb.nextLine();
         
         for (Book x : library_books) {
           if (x.getTitle().equals(query) || x.getISBN().equals(query)) {
@@ -98,7 +98,7 @@ public class Library {
       
       if (action.equals("browse")) {
         System.out.print("Enter a genre you are interested in");
-        String query = kb.next();
+        String query = kb.nextLine();
         System.out.println("You should take a look at these books currently available:");
         for (Book x : library_books) {
           if (x.getGenre().equals(query) && x.checkAvailable())
@@ -109,7 +109,7 @@ public class Library {
       
       if (action.equals("checkout") && user.equals("student")) {
         System.out.print("Enter the book name you wish to borrow. Make sure that it is avaiable first");
-        String query = kb.next();
+        String query = kb.nextLine();
         for (Book x : library_books) {
           if (x.getTitle().equals(query) && x.checkAvailable()) {
             System.out.print(x.getTitle() + " is the book being borrowed");
@@ -121,7 +121,7 @@ public class Library {
       
       if (action.equals("checkout") && user.equals("teacher")){
         System.out.print("Enter the book name you wish to borrow. Make sure that it is avaiable first");
-        String query = kb.next();
+        String query = kb.nextLine();
         for(Book x : library_books){
           if(x.getTitle().equals(query) && x.checkAvailable()){
             System.out.print(x.getTitle() + " is the book being borrowed");
@@ -133,7 +133,7 @@ public class Library {
       
       if(action.equals("return")&& user.equals("student")){
         System.out.print("Enter the title of the book you are returning");
-        String query = kb.next();
+        String query = kb.nextLine();
         Book returningBook = studentUser.findBook(query);
         studentUser.returnBook(returningBook);
         for(Book x : library_books){
@@ -144,7 +144,7 @@ public class Library {
       
       if(action.equals("return")&& user.equals("teacher")){
         System.out.print("Enter the title of the book you are returning");
-        String query = kb.next();
+        String query = kb.nextLine();
         Book returningBook = teacherUser.findBook(query);
         teacherUser.returnBook(returningBook);
         for(Book x : library_books){
@@ -165,24 +165,24 @@ public class Library {
     }
     
     if (user.equals("librarian")) {
-      System.out.print("Please enter your command (add/remove/view history/log off): ");
-      action = kb.next();
+      System.out.print("Please enter your command (add/remove/view history): ");
+      action = kb.nextLine();
       
       if (action.equals("add")) {
         System.out.print("Enter Title: ");
-        String t = kb.next();
+        String t = kb.nextLine();
         
         System.out.print("Enter ISBN: ");
-        String i = kb.next();
+        String i = kb.nextLine();
         
         System.out.print("Enter Genre: ");
-        String g = kb.next();
+        String g = kb.nextLine();
         
         System.out.print("Enter Author: ");
-        String a = kb.next();
+        String a = kb.nextLine();
         
         System.out.print("Enter Status: ");
-        String s = kb.next();
+        String s = kb.nextLine();
         
         ArrayList<String> h = new ArrayList<String>();
         Book b = new Book(t, i, g, a, s, "", "false", h);
@@ -191,7 +191,7 @@ public class Library {
       
       if (action.equals("remove")) {
         System.out.print("Enter ISBN or Title: ");
-        String query = kb.next();
+        String query = kb.nextLine();
         
         for (int i = 0; i < library_books.size(); i++) {
           if ((library_books.get(i).getTitle().equals(query)) || (library_books.get(i).getISBN().equals(query))) {
@@ -200,9 +200,9 @@ public class Library {
         }
       }
       
-      if (action.substring(0, 4).equals("view")) {
+      if (action.equals("view history")) {
         System.out.print("Enter ISBN or Title: ");
-        String query = kb.next();
+        String query = kb.nextLine();
         
         for (Book x : library_books) {
           if (x.getTitle().equals(query) || x.getISBN().equals(query)) {
