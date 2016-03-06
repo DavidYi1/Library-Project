@@ -7,7 +7,7 @@ public class Library {
   
   public static void main (String[] args) throws IOException {
     boolean run = true;
-    String action = " ";
+    String action = "";
     
     //make library
     ArrayList<String> allBookData = new ArrayList<String>();
@@ -71,7 +71,7 @@ public class Library {
     System.out.print("What account type would you like to access? (student/teacher/librarian)");
     String user = kb.next();
     
-    System.out.println("");
+    System.out.println();
     
     //If user is of borrower class
     if (user.equals("student") || user.equals("teacher")) {
