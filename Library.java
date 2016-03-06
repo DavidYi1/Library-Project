@@ -3,7 +3,6 @@ import java.util.*;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 
-
 public class Library {
   
   public static void main (String[] args) throws IOException {
@@ -47,7 +46,7 @@ public class Library {
     Student studentUser = new Student(StudentInfo[0],StudentInfo[1],StudentInfo[2], StudentInfo[3], StudentInfo[4]);    
     while ((line = stu.readLine()) != null) {
       for (Book x : library_books) {
-        if(x.getTitle().equals(line)){
+        if (x.getTitle().equals(line)) {
           studentUser.addBook(x);
         }
       }
@@ -61,7 +60,7 @@ public class Library {
     Teacher teacherUser = new Teacher(TeacherInfo[0],TeacherInfo[1]); 
     while ((line = teach.readLine()) != null) {
       for (Book x : library_books) {
-        if(x.getTitle().equals(line))
+        if (x.getTitle().equals(line))
           teacherUser.addBook(x);
       }
     }
@@ -82,7 +81,7 @@ public class Library {
       if (action.equals("search")) {
         System.out.print("Enter an ISBN or Title");
         String query = kb.nextLine();
-            
+        
         for (Book x : library_books) {
           if (x.getTitle().equals(query) || x.getISBN().equals(query)) {
             System.out.print("The book" + x.getTitle() + "(" + x.getISBN() + ")" + " is currently ");
@@ -101,10 +100,9 @@ public class Library {
         System.out.print("Enter a genre you are interested in");
         String query = kb.nextLine();
         System.out.println("You should take a look at these books currently available:");
-        for(Book x : library_books){
-          if(x.getGenre().equals(query) && x.checkAvailable())
+        for (Book x : library_books) {
+          if (x.getGenre().equals(query) && x.checkAvailable())
             System.out.println(x.getTitle() + "(" + x.getISBN() + ")" );
-          
         }
         System.out.println("If none of these books pique your interest, please wait until some other books are returned or more books are obtained by the library");
       }
@@ -112,8 +110,8 @@ public class Library {
       if (action.equals("checkout") && user.equals("student")) {
         System.out.print("Enter the book name you wish to borrow. Make sure that it is avaiable first");
         String query = kb.nextLine();
-        for(Book x : library_books){
-          if(x.getTitle().equals(query) && x.checkAvailable()){
+        for (Book x : library_books) {
+          if (x.getTitle().equals(query) && x.checkAvailable()) {
             System.out.print(x.getTitle() + " is the book being borrowed");
             studentUser.borrow(x);
             x.setLastHolder(studentUser.getName());
@@ -121,7 +119,7 @@ public class Library {
         }
       }
       
-      if (action.equals("checkout") && user.equals("teacher")){
+      if (action.equals("checkout") && user.equals("teacher")) {
         System.out.print("Enter the book name you wish to borrow. Make sure that it is avaiable first");
         String query = kb.nextLine();
         for (Book x : library_books) {
@@ -138,8 +136,8 @@ public class Library {
         String query = kb.nextLine();
         Book returningBook = studentUser.findBook(query);
         studentUser.returnBook(returningBook);
-        for(Book x : library_books){
-          if(x.equals(returningBook))
+        for (Book x : library_books) {
+          if (x.equals(returningBook))
             x.bookReturned();
         }
       }
@@ -149,8 +147,8 @@ public class Library {
         String query = kb.nextLine();
         Book returningBook = teacherUser.findBook(query);
         teacherUser.returnBook(returningBook);
-        for(Book x : library_books){
-          if(x.equals(returningBook))
+        for (Book x : library_books) {
+          if (x.equals(returningBook))
             x.bookReturned();
         }
       }
