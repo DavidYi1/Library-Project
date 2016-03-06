@@ -1,6 +1,7 @@
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.Calendar;
+
 public abstract class Borrower {
   
   private Book[] books;
@@ -9,7 +10,7 @@ public abstract class Borrower {
   
   public abstract boolean noSpace();
   
-  public void borrow(Book b, int checkoutTime){
+  public void borrow(Book b, int checkoutTime) {
     if(noSpace() == false){
       Date date = new Date();
       int noOfDays = checkoutTime;
@@ -26,7 +27,7 @@ public abstract class Borrower {
         }
       }
     }
-    else{
+    else {
       fullSpace();
     }
   }
