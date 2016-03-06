@@ -7,7 +7,7 @@ public class Library {
   
   public static void main (String[] args) throws IOException {
     boolean run = true;
-    String action = "";
+    String action = " ";
     
     //make library
     ArrayList<String> allBookData = new ArrayList<String>();
@@ -22,7 +22,7 @@ public class Library {
     br.close();
 
     //converts all the book data into Book objects
-    for (int i = 0; i < allBookData.size(); i++) {
+    for(int i = 0; i < allBookData.size(); i++) {
       String bookData = allBookData.get(i);
       String[] bookInfo = bookData.split(","); 
       //split based on comma delimited format
@@ -33,7 +33,7 @@ public class Library {
       String status = bookInfo[4];
       String dueDate = bookInfo[5];
       String checkOut = bookInfo[6];
-      String h = bookInfo[7];
+      ArrayList<String> h = bookInfo[7];
       Book input = new Book(title, isbn, genre, author, status, dueDate, checkOut, h);
       library_books.add(input);
     }
@@ -71,7 +71,7 @@ public class Library {
     System.out.print("What account type would you like to access? (student/teacher/librarian)");
     String user = kb.next();
     
-    System.out.println();
+    System.out.println("");
     
     //If user is of borrower class
     if (user.equals("student") || user.equals("teacher")) {
@@ -159,7 +159,7 @@ public class Library {
       
     if (user.equals("librarian")) {
       System.out.print("Please enter your command (add/remove/view history/log off): ");
-      action = kb.nextLine();
+      action = kb.next();
       
       if (action.equals("add")) {
         System.out.print("Enter Title: ");
@@ -177,7 +177,8 @@ public class Library {
         System.out.print("Enter Status: ");
         String s = kb.next();
         
-        Book b = new Book(t, i, g, a, s, "", "false", "")
+        ArrayList<String> h = new ArrayList<String>();
+        Book b = new Book(t, i, g, a, s, "", "false", h);
         library_books.add(b);
       }
       
@@ -228,17 +229,16 @@ public class Library {
     //Make a file of student info
     PrintWriter studentfile = new PrintWriter(new BufferedWriter(new FileWriter("student.txt")));
     studentfile.println(lineStudent); // adds the first line back of student info
-    for (String bookTitle : studentUser.listBorrowedBooks())
+    for(String bookTitle : studentUser.listBorrowedBooks())
       studentfile.println(bookTitle);
     studentfile.close();
     
     //Make a file of teacher info
     PrintWriter teacherfile = new PrintWriter(new BufferedWriter(new FileWriter("student.txt")));
     teacherfile.println(lineTeacher); // adds the first line back of student info
-    for (teacherfile bookTitle : teacherUser.listBorrowedBooks())
+    for(teacherfile bookTitle : teacherUser.listBorrowedBooks())
       teacherfile.println(bookTitle);
     teacherfile.close();
+    
   }
 }
-
-
