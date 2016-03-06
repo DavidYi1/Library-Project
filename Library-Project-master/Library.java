@@ -1,7 +1,6 @@
 import java.io.*;
 import java.util.*;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
+
 
 public class Library {
   
@@ -33,7 +32,9 @@ public class Library {
       String status = bookInfo[4];
       String dueDate = bookInfo[5];
       String checkOut = bookInfo[6];
-      String h = bookInfo[7];
+      ArrayList<String> h = new ArrayList<String>();
+      for(int k = 7; k > bookInfo.length; k++)
+        h.add(bookInfo[k]);
       Book input = new Book(title, isbn, genre, author, status, dueDate, checkOut, h);
       library_books.add(input);
     }
@@ -45,8 +46,8 @@ public class Library {
     String[] StudentInfo = lineStudent.split(",");
     Student studentUser = new Student(StudentInfo[0],StudentInfo[1],StudentInfo[2], StudentInfo[3], StudentInfo[4]);    
     while ((line = stu.readLine()) != null) {
-      for (Book x : library_books) {
-        if (x.getTitle().equals(line)) {
+      for(Book x : library_books){
+        if(x.getTitle().equals(line)){
           studentUser.addBook(x);
         }
       }
@@ -59,8 +60,8 @@ public class Library {
     String[] TeacherInfo = lineTeacher.split(",");
     Teacher teacherUser = new Teacher(TeacherInfo[0],TeacherInfo[1]); 
     while ((line = teach.readLine()) != null) {
-      for (Book x : library_books) {
-        if (x.getTitle().equals(line))
+      for(Book x : library_books){
+        if(x.getTitle().equals(line))
           teacherUser.addBook(x);
       }
     }
@@ -74,18 +75,18 @@ public class Library {
     System.out.println("");
     
     //If user is of borrower class
-    if (user.equals("student") || user.equals("teacher")) {
+    if (user.equals("student") || user.equals("teacher") ){
       System.out.print("Please enter your command (search/browse/checkout/return/view checked-out books)");
       action = kb.nextLine();
       
-      if (action.equals("search")) {
+      if(action.equals("search")){
         System.out.print("Enter an ISBN or Title");
         String query = kb.nextLine();
-        
-        for (Book x : library_books) {
-          if (x.getTitle().equals(query) || x.getISBN().equals(query)) {
+            
+        for(Book x : library_books){
+          if(x.getTitle().equals(query) || x.getISBN().equals(query)){
             System.out.print("The book" + x.getTitle() + "(" + x.getISBN() + ")" + " is currently ");
-            if (x.checkAvailable()) {
+            if(x.checkAvailable()){
               System.out.println("available");
             }
             else {
@@ -96,127 +97,81 @@ public class Library {
         System.out.println("These are the books currently avaiable based on your search. If the book you want didn't appear, please wait until it is returned or another copy is obtained by the library");
       }
       
-      if (action.equals("browse")) {
+      if(action.equals("browse")){
         System.out.print("Enter a genre you are interested in");
         String query = kb.nextLine();
         System.out.println("You should take a look at these books currently available:");
-        for (Book x : library_books) {
-          if (x.getGenre().equals(query) && x.checkAvailable())
+        for(Book x : library_books){
+          if(x.getGenre().equals(query) && x.checkAvailable())
             System.out.println(x.getTitle() + "(" + x.getISBN() + ")" );
+          
         }
         System.out.println("If none of these books pique your interest, please wait until some other books are returned or more books are obtained by the library");
       }
       
-      if (action.equals("checkout") && user.equals("student")) {
+      
+      if (action.equals("checkout") && user.equals("student")){
         System.out.print("Enter the book name you wish to borrow. Make sure that it is avaiable first");
         String query = kb.nextLine();
-        for (Book x : library_books) {
-          if (x.getTitle().equals(query) && x.checkAvailable()) {
+        for(Book x : library_books){
+          if(x.getTitle().equals(query) && x.checkAvailable()){
             System.out.print(x.getTitle() + " is the book being borrowed");
             studentUser.borrow(x);
             x.addLastHolder(studentUser.getName());
           }
         }
       }
-      
-      if (action.equals("checkout") && user.equals("teacher")) {
+      if (action.equals("checkout") && user.equals("teacher")){
         System.out.print("Enter the book name you wish to borrow. Make sure that it is avaiable first");
         String query = kb.nextLine();
-        for (Book x : library_books) {
-          if (x.getTitle().equals(query) && x.checkAvailable()) {
+        for(Book x : library_books){
+          if(x.getTitle().equals(query) && x.checkAvailable()){
             System.out.print(x.getTitle() + " is the book being borrowed");
             studentUser.borrow(x);
             x.addLastHolder(teacherUser.getName());
           }
         }
       }
-      
-      if (action.equals("return") && user.equals("student")) {
+      if(action.equals("return")&& user.equals("student")){
         System.out.print("Enter the title of the book you are returning");
         String query = kb.nextLine();
         Book returningBook = studentUser.findBook(query);
         studentUser.returnBook(returningBook);
-        for (Book x : library_books) {
-          if (x.equals(returningBook))
+        for(Book x : library_books){
+          if(x.equals(returningBook))
             x.bookReturned();
         }
       }
-      
-      if (action.equals("return") && user.equals("teacher")) {
+      if(action.equals("return")&& user.equals("teacher")){
         System.out.print("Enter the title of the book you are returning");
         String query = kb.nextLine();
         Book returningBook = teacherUser.findBook(query);
         teacherUser.returnBook(returningBook);
-        for (Book x : library_books) {
-          if (x.equals(returningBook))
+        for(Book x : library_books){
+          if(x.equals(returningBook))
             x.bookReturned();
         }
       }
-      
       else
         System.out.print("Could not understand action. Please restart");
     }
-      
-    if (user.equals("librarian")) {
-      System.out.print("Please enter your command (add/remove/view history/log off): ");
-      action = kb.nextLine();
-      
-      if (action.equals("add")) {
-        System.out.print("Enter Title: ");
-        String t = kb.next();
-        
-        System.out.print("Enter ISBN: ");
-        String i = kb.next();
-        
-        System.out.print("Enter Genre: ");
-        String g = kb.next();
-        
-        System.out.print("Enter Author: ");
-        String a = kb.next();
-        
-        System.out.print("Enter Status: ");
-        String s = kb.next();
-        
-        Book b = new Book(t, i, g, a, s, "", "false", "")
-        library_books.add(b);
-      }
-      
-      if (action.equals("remove")) {
-        System.out.print("Enter ISBN or Title: ");
-        String query = kb.nextLine();
-        
-        for (int i = 0; i < library_books.size(); i++) {
-          if ((library_books.get(i).getTitle().equals(query)) || (library_books.get(i).getISBN().equals(query))) {
-            library_books.remove(i);
-          }
-        }
-      }
-      
-      if (action.substring(0, 4).equals("view")) {
-        System.out.print("Enter ISBN or Title: ");
-        String query = kb.nextLine();
-        
-        for (Book x : library_books) {
-          if (x.getTitle().equals(query) || x.getISBN().equals(query)) {
-            System.out.println(x.getHistory());
-          }
-        }
-      }
-    }
     
+   
+      
+
     PrintWriter bookfile = new PrintWriter(new BufferedWriter(new FileWriter("books.txt")));
-    for (Book x: library_books) {
+    for(Book x: library_books){
       String printTitle = x.getTitle();
       String printISBN = x.getISBN();
       String printGenre = x.getGenre();
       String printDueDate;
       String printCheckedOut;
       //if book has been checked out
-      if (x.getDateDue() != null) {
+      if(x.getDateDue() != null){
         printDueDate = x.convertDateToString(x.getDateDue());
         printCheckedOut = "true";
       }
-      else {
+      else{
         printDueDate = x.convertDateToString(x.getDateDue());
         printCheckedOut = "false";
       }
@@ -235,9 +190,12 @@ public class Library {
     //Make a file of teacher info
     PrintWriter teacherfile = new PrintWriter(new BufferedWriter(new FileWriter("student.txt")));
     teacherfile.println(lineTeacher); // adds the first line back of student info
-    for(teacherfile bookTitle : teacherUser.listBorrowedBooks())
+    for(String bookTitle : teacherUser.listBorrowedBooks())
       teacherfile.println(bookTitle);
     teacherfile.close();
     
+    kb.close();
   }
 }
+
+
