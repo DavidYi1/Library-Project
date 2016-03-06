@@ -22,7 +22,7 @@ public class Library {
     br.close();
 
     //converts all the book data into Book objects
-    for(int i = 0; i < allBookData.size(); i++) {
+    for (int i = 0; i < allBookData.size(); i++) {
       String bookData = allBookData.get(i);
       String[] bookInfo = bookData.split(","); 
       //split based on comma delimited format
@@ -228,17 +228,16 @@ public class Library {
     //Make a file of student info
     PrintWriter studentfile = new PrintWriter(new BufferedWriter(new FileWriter("student.txt")));
     studentfile.println(lineStudent); // adds the first line back of student info
-    for(String bookTitle : studentUser.listBorrowedBooks())
+    for (String bookTitle : studentUser.listBorrowedBooks())
       studentfile.println(bookTitle);
     studentfile.close();
     
     //Make a file of teacher info
     PrintWriter teacherfile = new PrintWriter(new BufferedWriter(new FileWriter("student.txt")));
     teacherfile.println(lineTeacher); // adds the first line back of student info
-    for(teacherfile bookTitle : teacherUser.listBorrowedBooks())
+    for (teacherfile bookTitle : teacherUser.listBorrowedBooks())
       teacherfile.println(bookTitle);
     teacherfile.close();
-    
   }
 }
 
