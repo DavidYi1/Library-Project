@@ -1,6 +1,7 @@
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.Calendar;
+import java.util.ArrayList;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 
@@ -13,7 +14,7 @@ public class Book {
   private String status;
   private Date dueDate;
   private boolean checkedOut;
-  private String lastHolder;
+  private ArrayList<String> lastHolders;
   
   public Book(String t, String i, String g, String a, String s, String dd, String check, String h) {
     title = t;
@@ -53,12 +54,12 @@ public class Book {
     return isbn;
   }
   
-  public String getLastHolder() {
-    return lastHolder;
+  public ArrayList<String> getLastHolder() {
+    return lastHolders;
   }
   
-  public void setLastHolder(String s) {
-    lastHolder = s;
+  public void addLastHolder(String s) {
+    lastHolders.add(s);
   }
   
   public void bookCheckedOut(Date dueIn) {
