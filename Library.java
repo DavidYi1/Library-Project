@@ -198,7 +198,7 @@ public class Library {
         
         for (Book x : library_books) {
           if (x.getTitle().equals(query) || x.getISBN().equals(query)) {
-            System.out.println(x.getLastHolder());
+            System.out.println(x.getHistory());
           }
         }
       }
