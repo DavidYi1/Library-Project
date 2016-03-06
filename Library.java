@@ -114,7 +114,7 @@ public class Library {
           if (x.getTitle().equals(query) && x.checkAvailable()) {
             System.out.print(x.getTitle() + " is the book being borrowed");
             studentUser.borrow(x);
-            x.setLastHolder(studentUser.getName());
+            x.addLastHolder(studentUser.getName());
           }
         }
       }
@@ -126,7 +126,7 @@ public class Library {
           if (x.getTitle().equals(query) && x.checkAvailable()) {
             System.out.print(x.getTitle() + " is the book being borrowed");
             studentUser.borrow(x);
-            x.setLastHolder(teacherUser.getName());
+            x.addLastHolder(teacherUser.getName());
           }
         }
       }
