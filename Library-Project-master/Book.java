@@ -14,7 +14,7 @@ public class Book {
   private String status;
   private Date dueDate;
   private boolean checkedOut;
-  private ArrayList<String> lastHolders;
+  private ArrayList<String> history;
   
   public Book(String t, String i, String g, String a, String s, String dd, String check, String h) {
     title = t;
@@ -54,12 +54,12 @@ public class Book {
     return isbn;
   }
   
-  public ArrayList<String> getLastHolder() {
-    return lastHolders;
+  public ArrayList<String> getHistory() {
+    return history;
   }
   
   public void addLastHolder(String s) {
-    lastHolders.add(s);
+    history.add(s);
   }
   
   public void bookCheckedOut(Date dueIn) {
