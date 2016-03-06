@@ -14,21 +14,23 @@ public class Teacher extends Borrower {
     name = n;
   }
   
+   
   public void addBook(Book b){ // used at the start to add all books 
     for (int i = 0; i < books.length; i++) {
-      if (books[i] == null) {
-        books[i] = b;
-        dates[i] = b.getDateDue();
-        return;
+        if (books[i] == null) {
+          books[i] = b;
+          dates[i] = b.getDateDue();
+          return;
+        }
       }
-    }
   }
   
-  public String getName() {
+  public String getName(){
     return name;
   }
+
   
-  public void borrow(Book b){
+public void borrow(Book b){
     if(noSpace() == false){
       Date date = new Date();
       GregorianCalendar calendar = new GregorianCalendar();
@@ -46,19 +48,21 @@ public class Teacher extends Borrower {
         }
       }
     }
-    else {
+    else{
       fullSpace();
     }
   }
   
   public boolean noSpace(){
     for (int i = 0; i < books.length; i++) {
-      if (books[i] == null) {
-        return false;
+        if (books[i] == null) {
+          return false;
+        }
       }
-    }
     return true;
   }
+  
+
   
   public void fullSpace(){
     System.out.println("You can not borrow anymore books");
@@ -78,16 +82,15 @@ public class Teacher extends Borrower {
       System.out.println("No such book exists");
       return;
     }
-    
     for (int i = 0; i < books.length; i++) {
-      if (books[i] == b) {
-        books[i] = null;
-        if(today.after(dates[i]))
-          System.out.println("This book is overdue. Please return it faster next time as others may wish to read it");
-        dates[i] = null;               
-        return;
+        if (books[i] == b) {
+          books[i] = null;
+          if(today.after(dates[i]))
+            System.out.println("This book is overdue. Please return it faster next time as others may wish to read it");
+          dates[i] = null;               
+          return;
+        }
       }
-    }
     System.out.println("No such book borrowed");
   }
   
@@ -97,7 +100,6 @@ public class Teacher extends Borrower {
         System.out.println(books[i].getTitle());
     }
   }
-  
   public ArrayList<String> listBorrowedBooks(){
     ArrayList<String> borrowedBooks = new ArrayList<String>();
     for (int i = 0; i < books.length; i++){

@@ -1,4 +1,7 @@
-import java.util.*;
+import java.util.Date;
+import java.util.ArrayList;
+import java.util.GregorianCalendar;
+import java.util.Calendar;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 
@@ -11,8 +14,9 @@ public class Book {
   private String status;
   private Date dueDate;
   private boolean checkedOut;
-  private ArrayList<String> lastHolder = new ArrayList<String>();
+  private ArrayList<String> lastHolder;
 
+  
   public Book(String t, String i, String g, String a, String s, String dd, String check, ArrayList<String> h) {
     title = t;
     isbn = i;
@@ -20,7 +24,7 @@ public class Book {
     author = a;
     status = s;
     //if there exists nothing between s and check then this should be false and the book is in the library
-    if (!dd.equals("")) {
+    if (!dd.equals(" ")){
       dueDate = convertStringToDate(dd);
     }
     else 
@@ -69,6 +73,14 @@ public class Book {
   public void bookReturned() {
     checkedOut = false;
     dueDate = null;
+  }
+  
+  public String getAuthor(){
+    return author;
+  }
+  
+  public String getStatus(){
+   return status; 
   }
   
   public Date getDateDue(){
